@@ -10,15 +10,19 @@ public class PlayerTakedown : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetButtonDown("Takedown" + playerNum)) {
-			Takedown();
+			print("button!!!!");
+			Takedown();	
 		}
 	}
 
 	public void Takedown() {
 		PlayerTakedown[] assassins = FindObjectsOfType<PlayerTakedown>();
+		print(assassins.Length);
 		foreach (PlayerTakedown ass in assassins) {
+			print("takedonw!!!! " + ass.playerNum + "---" + this.playerNum);
 			if (ass.playerNum == this.playerNum)
-				return;
+				continue;
+			print(Vector3.Distance(ass.transform.position, transform.position));
 			if (Vector3.Distance(ass.transform.position, transform.position) < minDistance) {
 				//Destroy(ass);
 				//ass.GetComponent<Collider>().isTrigger = false;

@@ -22,12 +22,9 @@ public class NPCCivilian : NPC {
 
 	public void setInCrowd() {
 		float rand = Random.Range(1f, 10f);
-		if (rand < 8)
-		{
+		if (rand < 8) {
 			inCrowd = true;
-		}
-		else
-		{
+		} else {
 			inCrowd = false;
 		}
 
@@ -56,22 +53,16 @@ public class NPCCivilian : NPC {
 
 	IEnumerator Run() {
 		while (true) {
-			if (inCrowd)
-			{
+			if (inCrowd) {
 				MoveRandom();
-			}
-			else
-			{
+			} else {
 				GoToCrowd();
 			}
-			if (inCrowd)
-			{
+			if (inCrowd) {
 				while (agent.velocity.magnitude > 0)
 					yield return null;
 				yield return new WaitForSeconds(Random.Range(10f, 60f));
-			}
-			else
-			{
+			} else {
 				while (agent.velocity.magnitude > 0)
 					yield return null;
 				yield return new WaitForSeconds(Random.Range(5f, 10f));
