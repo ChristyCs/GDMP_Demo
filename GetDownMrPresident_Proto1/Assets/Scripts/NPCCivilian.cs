@@ -22,7 +22,7 @@ public class NPCCivilian : NPC {
 
 	public void setInCrowd() {
 		float rand = Random.Range(1f, 10f);
-		if (rand < 5)
+		if (rand < 8)
 		{
 			inCrowd = true;
 		}
@@ -39,9 +39,9 @@ public class NPCCivilian : NPC {
 
 	public void GoToCrowd() {
 		setInCrowd();
-		GameObject p = GameObject.Find("Podium");
+		GameObject p = GameObject.Find("TempStage");
 		Vector3 pod = p.transform.position;
-		float randx = Random.Range(-2f, 5f);
+		float randx = Random.Range(-5f, 5f);
 		float randz = Random.Range(-5f, 5f);
 		agent.transform.LookAt(new Vector3(pod.x + randx, 0, pod.z + randz));
 		agent.SetDestination(new Vector3(pod.x + randx, 0, pod.z + randz));
