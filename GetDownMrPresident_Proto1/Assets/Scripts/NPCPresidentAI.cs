@@ -9,11 +9,13 @@ public class NPCPresidentAI : NPC {
 	Animator animator;
 	bool atPodium = false;
 
+
+
 	void Start() {
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
 		StartCoroutine(Run());
-	}
+    }
 
 	void Update() {
 		animator.SetFloat("Speed", agent.velocity.magnitude);
