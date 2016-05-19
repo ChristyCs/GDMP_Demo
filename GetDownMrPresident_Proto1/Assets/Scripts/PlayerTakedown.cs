@@ -9,7 +9,8 @@ public class PlayerTakedown : MonoBehaviour {
 	public int playerNum = 1;
 
 	void Update() {
-		if (Input.GetButtonDown("Takedown" + playerNum)) {
+        // Assuming that player 1 is assassin, will need to be changed when player switching is implemented
+		if (Input.GetButtonDown("XButton" + 1)) {
 			print("button!!!!");
 			Takedown();	
 		}

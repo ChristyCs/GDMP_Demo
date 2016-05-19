@@ -13,7 +13,7 @@ public class InspectionCam : MonoBehaviour {
 	}
 	
 	void Update() {
-		Vector3 v = new Vector3(Input.GetAxis("HorizontalInspect" + playerNum), 0, Input.GetAxis("VerticalInspect" + playerNum));
+		Vector3 v = new Vector3(Input.GetAxis("RightStickX" + playerNum), 0, Input.GetAxis("RightStickY" + playerNum));
 		v = transform.TransformDirection(v);
 		v = Vector3.ProjectOnPlane(v, Vector3.down);
 		v *= sensitivity;

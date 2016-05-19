@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
         
         // Toggle Run
-		if (Input.GetButton("Run" + playerNum) == true) {
+		if (Input.GetButton("AButton" + playerNum) == true) {
 			actSpeed = speed * runMultiplier;
 		} else {
 			actSpeed = speed;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-        Vector3 v = new Vector3(Input.GetAxis("HorizontalMove" + playerNum) * actSpeed, 0, Input.GetAxis("VerticalMove" + playerNum) * actSpeed);
+        Vector3 v = new Vector3(Input.GetAxis("LeftStickX" + playerNum) * actSpeed, 0, Input.GetAxis("LeftStickY" + playerNum) * actSpeed);
         
         v = Camera.main.transform.TransformDirection(v);
         v = Vector3.ProjectOnPlane(v, Vector3.down);
