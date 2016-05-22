@@ -9,15 +9,29 @@ public class NPCCivilian : NPC {
 	Animator animator;
 	bool inCrowd;
 
+    Vector3 civPosition;
+    int idleCounter = 0;
+
 	void Start() {
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
+        civPosition = agent.transform.position;
 		setInCrowd();
 		StartCoroutine(Run());
 	}
 
 	void Update() {
 		animator.SetFloat("Speed", agent.velocity.magnitude);
+        if(Mathf.Abs(civPosition.magnitude - agent.transform.position.magnitude) < 1.5)
+        {
+            idleCounter++;
+            if(idleCounter > 100)
+            {
+                MoveRandom();
+            }
+        }
+        
+        
 	}
 
 	public void setInCrowd() {
@@ -58,17 +72,20 @@ public class NPCCivilian : NPC {
 			} else {
 				GoToCrowd();
 			}
-			if (inCrowd) {
-				while (agent.velocity.magnitude > 0)
-					yield return null;
-				yield return new WaitForSeconds(Random.Range(10f, 60f));
-			} else {
-				while (agent.velocity.magnitude > 0)
-					yield return null;
-				yield return new WaitForSeconds(Random.Range(5f, 10f));
-			}
+            //if (inCrowd) {
+            //	while (agent.velocity.magnitude > 0)
+            //		yield return null;
+            //	yield return new WaitForSeconds(1);
+            //} else {
+            //	while (agent.velocity.magnitude > 0)
+            //		yield return null;
+            //	yield return new WaitForSeconds(1);
+            //}
+            while (agent.velocity.magnitude > 0)
+                yield return null;
+            yield return new WaitForSeconds(1);
 
-		}
-	}
+        }
+    }
 
 }
