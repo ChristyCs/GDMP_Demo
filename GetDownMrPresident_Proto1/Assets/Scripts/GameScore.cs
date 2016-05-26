@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class GameScore : MonoBehaviour {
-    
 
+    int roundDuration;
+    int durationRemaining;
     int duration;
     int seconds;
     int mins;
@@ -15,6 +16,7 @@ public class GameScore : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        roundDuration = 240;
         updateDuration();
         bodyGuardScore = 0;
         assassinScore = 0;
@@ -29,8 +31,10 @@ public class GameScore : MonoBehaviour {
 
     void updateDuration(){
         duration = (int)Time.time;
-        seconds = duration % 60;
-        mins = (duration - mins) / 60;
+        durationRemaining = roundDuration - duration;
+
+        seconds = durationRemaining % 60;
+        mins = (durationRemaining - mins) / 60;
         durationString = mins.ToString("00") + ":" + seconds.ToString("00");
     }
 
