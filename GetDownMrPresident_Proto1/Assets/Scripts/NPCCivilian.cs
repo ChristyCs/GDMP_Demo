@@ -22,13 +22,15 @@ public class NPCCivilian : NPC {
 
 	void Update() {
 		animator.SetFloat("Speed", agent.velocity.magnitude);
-        if(Mathf.Abs(civPosition.magnitude - agent.transform.position.magnitude) < 1.5)
+        if(Mathf.Abs(civPosition.magnitude - agent.transform.position.magnitude) < 2)
         {
             idleCounter++;
-            if(idleCounter > 100)
+            if(idleCounter > 250)
             {
                 MoveRandom();
             }
+        }else {
+            idleCounter = 0;
         }
         
         
